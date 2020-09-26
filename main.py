@@ -37,4 +37,19 @@ def game_core_v2(number):
             predict -= 1
     return(count) # выход из цикла, если угадали
 
-score_game(game_core_v2)
+def game_core_v3(number):
+    '''Находим значение числа, которое равно середине отрезка и потом в зависимости от того больше оно или меньше, загаданного числа, изменяем границы отрезка.'''
+    a=0
+    b=101
+    count = 1
+    predict=(a+b)//2 # число равное середине отрезка
+    while number != predict:
+        count+=1
+        if number < predict:
+            b=predict # меняем границу числа если оно меньше загаданного числа
+        elif number > predict:
+            a = predict # меняем границу числа если оно больше загаданного числа
+        predict = (a+b)//2 # находим значение числа равное середине нового отрезка
+    return(count) # выход из цикла если угадали
+
+score_game(game_core_v3)
